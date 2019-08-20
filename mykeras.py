@@ -55,10 +55,12 @@ class MaxPooling3D(Layer):
         
         self.layers = []
         self.layers.append(Reshape(shape_2d_0))
-        self.layers.append(MaxPooling2D((p2,p3), padding=self.padding))
+	self.layers.append(MaxPooling2D(pool_size=(p2,p3), #strides=self.strides,          
+	      padding=self.padding, data_format=self.data_format))
     
         self.layers.append(Reshape(shape_2d_1))
-        self.layers.append(MaxPooling2D((p1, 1), padding=self.padding))
+	self.layers.append(MaxPooling2D(pool_size=(p1, 1), #strides=self.strides,
+	      padding=self.padding, data_format=self.data_format))
 
         self.layers.append(Reshape(shape_f))
  
